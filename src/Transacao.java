@@ -1,14 +1,14 @@
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Transacao {
     private String descricao;
     private double valor;
-    private Date data;
+    private LocalDate data;
 
-    public Transacao(String descricao, double valor) {
+    public Transacao(String descricao, double valor, LocalDate data) {
         this.descricao = descricao;
         this.valor = valor;
-        this.data = new Date();
+        this.data = data;
     }
 
     public String getDescricao() {
@@ -19,9 +19,7 @@ public class Transacao {
         return valor;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
-
-    
 }

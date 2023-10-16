@@ -16,16 +16,20 @@ public class Conta {
         this.transacao = new ArrayList<>();
     }
 
-    public String getNumConta() {
-        return numConta;
-    }
-
     public String getNumAgencia() {
         return numAgencia;
     }
 
+    public String getNumConta() {
+        return numConta;
+    }
+
     public double getSaldo() {
         return saldo;
+    }
+
+    public void setSaldo(double saldo){
+        this.saldo = saldo;
     }
 
     public Cliente getCliente() {

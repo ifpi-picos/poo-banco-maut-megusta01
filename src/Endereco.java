@@ -1,13 +1,13 @@
 public class Endereco {
-    private String rua;
-    private String numero;
+    private String logradouro;
+    private int numero;
     private String bairro;
     private String cep;
     private String cidade;
     private String uf;
 
-    public Endereco(String rua, String numero, String bairro, String cep, String cidade, String estado){
-        this.rua = rua;
+    public Endereco(String logradouro, int numero, String bairro, String cep, String cidade, String uf){
+        this.logradouro = logradouro;
         this.numero = numero;
         this.bairro = bairro;
         this.cep = cep;
@@ -15,11 +15,11 @@ public class Endereco {
         this.uf = uf;
     }
 
-    public String getRua() {
-        return rua;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public String getNumero(){
+    public int getNumero(){
         return numero;
     }
 
@@ -39,11 +39,11 @@ public class Endereco {
         return uf;
     }
 
-    public void setRua(String rua) {
-        this.rua = rua;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
