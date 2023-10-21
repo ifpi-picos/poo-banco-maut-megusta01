@@ -8,10 +8,10 @@ public class Conta {
     private Cliente cliente;
     private List<Transacao> transacao;
 
-    public Conta(String numConta, String numAgencia, Cliente cliente) {
+    public Conta(String numConta, String numAgencia, double saldo, Cliente cliente) {
         this.numConta = numConta;
         this.numAgencia = numAgencia;
-        this.saldo = 0.0;
+        this.saldo = saldo;
         this.cliente = cliente;
         this.transacao = new ArrayList<>();
     }
@@ -44,4 +44,11 @@ public class Conta {
         this.cliente = cliente;
     }
 
+    public void depositar(double deposito) {
+        if (deposito > 0) {
+            setSaldo(getSaldo() + deposito);
+        } else {
+            System.out.println("Depósito inválido");
+        }
+    }
 }
