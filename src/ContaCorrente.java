@@ -22,10 +22,10 @@ public class ContaCorrente extends Conta {
         }
     }
 
-    public void transferir(ContaCorrente destino, double transferencia) {
+    public void transferir(ContaPoupanca contaPoupanca, double transferencia) {
         if (transferencia > 0 && getSaldo() >= transferencia) {
             setSaldo(getSaldo() - transferencia);
-            destino.depositar(transferencia);
+            contaPoupanca.depositar(transferencia);
         } else {
             System.out.println("Transferência inválida");
         }
