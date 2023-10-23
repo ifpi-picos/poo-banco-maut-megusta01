@@ -4,16 +4,18 @@ import java.util.List;
 public class Conta {
     private final String numConta;
     private final String numAgencia;
-    private double saldo;
+    protected double saldo;
     private Cliente cliente;
     private List<Transacao> transacao;
+    private Notificacao notificacao;
 
-    public Conta(String numConta, String numAgencia, double saldo, Cliente cliente) {
+    public Conta(String numConta, String numAgencia, double abertura, Cliente cliente, Notificacao notificacao) {
         this.numConta = numConta;
         this.numAgencia = numAgencia;
-        this.saldo = saldo;
+        this.saldo = abertura;
         this.cliente = cliente;
         this.transacao = new ArrayList<>();
+        this.notificacao = notificacao;
     }
 
     public String getNumAgencia() {
@@ -50,5 +52,9 @@ public class Conta {
         } else {
             System.out.println("Depósito inválido");
         }
+    }
+
+    public void setNotificacao(Notificacao notificacao) {
+        this.notificacao = notificacao;
     }
 }

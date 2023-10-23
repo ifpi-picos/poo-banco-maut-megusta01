@@ -1,8 +1,8 @@
 public class ContaPoupanca extends Conta {
     private double taxaRendimento;
 
-    public ContaPoupanca(String numConta, String numAgencia, double saldo, Cliente cliente, double taxaRendimento) {
-        super(numConta, numAgencia, saldo, cliente);
+    public ContaPoupanca(String numConta, String numAgencia, double saldo, Cliente cliente, double taxaRendimento, Notificacao notificacao) {
+        super(numConta, numAgencia, saldo, cliente, notificacao);
         this.taxaRendimento = taxaRendimento;
     }
 
@@ -15,4 +15,3 @@ public class ContaPoupanca extends Conta {
         depositar(rendimento);
     }
 }
-
