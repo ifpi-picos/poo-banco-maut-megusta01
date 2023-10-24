@@ -1,3 +1,4 @@
+package br.edu.ifpi.poo.entidades;
 import java.time.LocalDate;
 
 public class Cliente {
@@ -48,5 +49,12 @@ public class Cliente {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public Cliente(){
+        this.nome = "";
+        this.cpf = "";
+        this.dataNasc = null;
+        this.endereco = null;
     }
 }

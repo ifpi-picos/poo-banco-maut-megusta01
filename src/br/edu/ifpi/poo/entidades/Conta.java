@@ -1,5 +1,7 @@
+package br.edu.ifpi.poo.entidades;
 import java.util.ArrayList;
 import java.util.List;
+import br.edu.ifpi.poo.notificacoes.Notificacao;
 
 public abstract class Conta {
     private final String numConta;
@@ -54,7 +56,40 @@ public abstract class Conta {
         }
     }
 
+    public void sacar(double saque) {
+        if (saque > 0) {
+            if (saque <= getSaldo()) {
+                setSaldo(getSaldo() - saque);
+                getTransacao().add(new Transacao("Saque", saque));
+                notificacao.enviarNotificacao("Saque", saque);
+            } else {
+                System.out.println("Saldo insuficiente");
+            }
+        } else {
+            System.out.println("Saque inválido");
+        }
+    }
+
+    public Notificacao getNotificacao() {
+        return notificacao;
+    }
+
     public void setNotificacao(Notificacao notificacao) {
         this.notificacao = notificacao;
+    }
+
+    public void transferir(Conta destino, double valor) {
+        if (valor > 0) {
+            if (valor <= getSaldo()) {
+                setSaldo(getSaldo() - valor);
+                destino.setSaldo(destino.getSaldo() + valor);
+                getTransacao().add(new Transacao("Transferência", valor));
+                notificacao.enviarNotificacao("Transferência", valor);
+            } else {
+                System.out.println("Saldo insuficiente");
+            }
+        } else {
+            System.out.println("Valor inválido");
+        }
     }
 }

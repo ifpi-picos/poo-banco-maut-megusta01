@@ -1,3 +1,6 @@
+package br.edu.ifpi.poo.entidades;
+import br.edu.ifpi.poo.notificacoes.Notificacao;
+
 public class ContaPoupanca extends Conta {
     private double taxaRendimento;
 

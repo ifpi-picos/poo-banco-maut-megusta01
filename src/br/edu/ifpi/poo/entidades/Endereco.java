@@ -1,3 +1,4 @@
+package br.edu.ifpi.poo.entidades;
 public class Endereco {
     private String logradouro;
     private int numero;
