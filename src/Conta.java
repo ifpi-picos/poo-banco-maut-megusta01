@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Conta {
+public abstract class Conta {
     private final String numConta;
     private final String numAgencia;
     protected double saldo;

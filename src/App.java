@@ -4,9 +4,11 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
         Cliente cliente1 = new Cliente("Gustavo", "040887913-04", LocalDate.of(2003, 2, 11), 
             new Endereco("Rua 1", 0, "Bairro 1", "Cidade 1", "Estado 1", "CEP 1"));
-        CLiente cliente2 = new Cliente("João", "040887913-04", LocalDate.of(2003, 2, 11), null);
+        Cliente cliente2 = new Cliente("João", "040887913-04", LocalDate.of(2003, 2, 11),
+         null);
 
         while(true){
             System.out.println("1 - Criar conta");
