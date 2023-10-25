@@ -54,7 +54,8 @@ public class ContaCorrente extends Conta {
         if (valor > 0) {
             if (valor <= super.getSaldo() + chequeEspecial) {
                 super.setSaldo(super.getSaldo() - valor);
-                getTransacao().add(new Transacao("Saque", valor));
+                transacao.add(new Transacao("Saque", valor));
+                notificacao.enviarNotificacao("Saque: ", valor);
                 return true;
             } else {
                 notificacao.enviarNotificacao("Saldo insuficiente", 0);
@@ -67,13 +68,13 @@ public class ContaCorrente extends Conta {
         }
     }
 
-    public void exibirExtrato() {
-        for (Transacao conta : transacao) {
-            System.out.println("- Tipo: " + conta.getDescricao());
-            System.out.println("- Valor: R$" + conta.getValor());
-            System.out.println("- Data: " + conta.getData());
-            System.out.println("================================");
-            System.out.println("Saldo atual: R$" + saldo);
-        }
-    }
+    //public void exibirExtrato() {
+    //    for (Transacao conta : transacao) {
+    //        System.out.println("- Tipo: " + conta.getDescricao());
+    //        System.out.println("- Valor: R$" + conta.getValor());
+    //        System.out.println("- Data: " + conta.getData());
+    //        System.out.println("================================");
+    //        System.out.println("Saldo atual: R$" + saldo);
+    //    }
+    //}
 }

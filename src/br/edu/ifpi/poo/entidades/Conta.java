@@ -73,8 +73,8 @@ public abstract class Conta {
         if (valor > 0 && valor <= saldo) {
             saldo -= valor;
             destino.saldo += valor;
-            notificacao.enviarNotificacao("Transferencia", valor);
             transacao.add(new Transacao("Transferencia", valor));
+            notificacao.enviarNotificacao("Transferencia", valor);
             destino.getTransacao().add(new Transacao("Recibo transferencia", valor));
             return true;
         } else {
@@ -84,6 +84,13 @@ public abstract class Conta {
     }
 
     public void exibirExtrato() {
+        for (Transacao conta : transacao) {
+            System.out.println("- Tipo: " + conta.getDescricao());
+            System.out.println("- Valor: R$" + conta.getValor());
+            System.out.println("- Data: " + conta.getData());
+            System.out.println("================================");
+            System.out.println("Saldo atual: R$" + saldo);
+        }
     }
     
 

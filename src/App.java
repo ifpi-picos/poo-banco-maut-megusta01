@@ -124,7 +124,6 @@ public class App {
                 case 4:
                     System.out.println("Extrato da conta:");
                     contaOrigem.exibirExtrato();
-                    contaDestino.exibirExtrato();
 
                     break;
                 case 5:

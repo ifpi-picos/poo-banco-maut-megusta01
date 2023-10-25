@@ -56,7 +56,7 @@ public class ContaPoupanca extends Conta {
         }
     }
 
-    public void exibirExtrato() {
+    /*public void exibirExtrato() {
         for (Transacao conta : transacao) {
             System.out.println("- Tipo: " + conta.getDescricao());
             System.out.println("- Valor: R$" + conta.getValor());
@@ -64,6 +64,6 @@ public class ContaPoupanca extends Conta {
             System.out.println("================================");
             System.out.println("Saldo atual: R$" + saldo);
         }
-    }
+    }*/
 }
 
