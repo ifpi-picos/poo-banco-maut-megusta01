@@ -1,11 +1,11 @@
 package br.edu.ifpi.poo.entidades;
-import br.edu.ifpi.poo.notificacoes.Notificacao;
+import br.edu.ifpi.poo.notificacoes.NotificacaoEmail;
 
 public class ContaCorrente extends Conta {
     private double chequeEspecial;
     private int numSaques;
 
-    public ContaCorrente(String numConta, String numAgencia, Cliente cliente, Notificacao notificacao, double chequeEspecial) {
+    public ContaCorrente(String numConta, String numAgencia, Cliente cliente, NotificacaoEmail notificacao, double chequeEspecial) {
         super(numConta, numAgencia, cliente, notificacao);
         this.chequeEspecial = chequeEspecial;
         this.numSaques = 0;
@@ -15,8 +15,8 @@ public class ContaCorrente extends Conta {
         return super.getSaldo() + this.chequeEspecial;
     }
 
-    public double getSaldoCorrente() {
-        return super.saldo;
+    public static double getSaldoCorrente() {
+        return saldo;
     }
 
     @Override
@@ -52,8 +52,8 @@ public class ContaCorrente extends Conta {
     @Override
     public boolean sacar(double valor) {
         if (valor > 0) {
-            if (valor <= getSaldo() + chequeEspecial) {
-                setSaldo(getSaldo() - valor);
+            if (valor <= super.getSaldo() + chequeEspecial) {
+                super.setSaldo(super.getSaldo() - valor);
                 getTransacao().add(new Transacao("Saque", valor));
                 return true;
             } else {
@@ -61,8 +61,19 @@ public class ContaCorrente extends Conta {
                 return false;
             }
         } else {
-            notificacao.enviarNotificacao("Valor inválido", 0);
+            System.out.println("Saldo insuficiente ou valor inválido para saque!");
+            System.out.println("Não foi possível realizar o saque!");
             return false;
+        }
+    }
+
+    public void exibirExtrato() {
+        for (Transacao conta : transacao) {
+            System.out.println("- Tipo: " + conta.getDescricao());
+            System.out.println("- Valor: R$" + conta.getValor());
+            System.out.println("- Data: " + conta.getData());
+            System.out.println("================================");
+            System.out.println("Saldo atual: R$" + saldo);
         }
     }
 }

@@ -6,9 +6,9 @@ import br.edu.ifpi.poo.notificacoes.Notificacao;
 public abstract class Conta {
     private final String numConta;
     private final String numAgencia;
-    protected double saldo;
+    protected static double saldo;
     private Cliente cliente;
-    private List<Transacao> transacao;
+    protected static List<Transacao> transacao;
     protected Notificacao notificacao;
 
     public Conta(String numConta, String numAgencia, Cliente cliente, Notificacao notificacao) {
@@ -27,7 +27,7 @@ public abstract class Conta {
         return numConta;
     }
 
-    public double getSaldo() {
+    public static double getSaldo() {
         return saldo;
     }
 
@@ -82,15 +82,29 @@ public abstract class Conta {
             return false;
         }
     }
-    
 
     public void exibirExtrato() {
-        for (Transacao conta : transacao) {
-            System.out.println("- Tipo: " + conta.getDescricao());
-            System.out.println("- Valor: R$" + conta.getValor());
-            System.out.println("- Data: " + conta.getData());
-            System.out.println("================================");
-            System.out.println("Saldo atual: R$" + saldo);
-        }
     }
+    
+
+    // public void exibirExtrato() {
+    //     System.out.println("Extrato da Conta Corrente:");
+    //     for (Transacao conta : ContaCorrente.transacao) {
+    //         System.out.println("- Tipo: " + conta.getDescricao());
+    //         System.out.println("- Valor: R$" + conta.getValor());
+    //         System.out.println("- Data: " + conta.getData());
+    //         System.out.println("================================");
+    //     }
+    
+    //     System.out.println("Extrato da Conta Poupança:");
+    //     for (Transacao conta : ContaPoupanca.transacao) {
+    //         System.out.println("- Tipo: " + conta.getDescricao());
+    //         System.out.println("- Valor: R$" + conta.getValor());
+    //         System.out.println("- Data: " + conta.getData());
+    //         System.out.println("================================");
+    //     }
+    
+    //     System.out.println("Saldo atual da Conta Corrente: R$" + ContaCorrente.getSaldoCorrente());
+    //     System.out.println("Saldo atual da Conta Poupança: R$" + ContaPoupanca.getSaldoPoupanca());
+    // }
 }

@@ -82,8 +82,8 @@ public class App {
         while (!sair) {
             System.out.println("================================");
             System.out.println("===== Escolha uma operação: ====");
-            System.out.println("========== 1. Saque ============");
-            System.out.println("========= 2. Depósito ==========");
+            System.out.println("========= 1. Depósito ==========");
+            System.out.println("========== 2. Saque ============");
             System.out.println("======= 3. Transferência =======");
             System.out.println("===== 4. Imprimir Extrato ======");
             System.out.println("===== 5. Voltar ao Menu ========");
@@ -93,15 +93,6 @@ public class App {
 
             switch (escolha) {
                 case 1:
-                    System.out.println("Digite o valor do saque:");
-                    double valorSaque = scanner.nextDouble();
-                    if (contaOrigem.sacar(valorSaque)) {
-                        System.out.println("Saque realizado com sucesso!");
-                    } else {
-                        System.out.println("Não foi possível realizar o saque!");
-                    }
-                    break;
-                case 2:
                     System.out.println("Digite o valor do depósito:");
                     double valorDeposito = scanner.nextDouble();
                     if (contaOrigem.depositar(valorDeposito)) {
@@ -110,7 +101,18 @@ public class App {
                         System.out.println("Não foi possível realizar o depósito!");
                     }
                     break;
-                    case 3:
+                    
+                case 2:
+                    System.out.println("Digite o valor do saque:");
+                    double valorSaque = scanner.nextDouble();
+                    if (contaOrigem.sacar(valorSaque)) {
+                        System.out.println("Saque realizado com sucesso!");
+                    } else {
+                        System.out.println("Não foi possível realizar o saque!");
+                    }
+                    break;
+                    
+                case 3:
                     System.out.println("Digite o valor da transferência:");
                     double valorTransferencia = scanner.nextDouble();
                     if (contaOrigem.transferir(contaDestino, valorTransferencia)) {
@@ -122,6 +124,8 @@ public class App {
                 case 4:
                     System.out.println("Extrato da conta:");
                     contaOrigem.exibirExtrato();
+                    contaDestino.exibirExtrato();
+
                     break;
                 case 5:
                     sair = true;

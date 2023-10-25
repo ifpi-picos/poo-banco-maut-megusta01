@@ -1,11 +1,15 @@
 package br.edu.ifpi.poo.entidades;
-import br.edu.ifpi.poo.notificacoes.Notificacao;
+import br.edu.ifpi.poo.notificacoes.NotificacaoSMS;
 
 public class ContaPoupanca extends Conta {
 
-    public ContaPoupanca(String numConta, String numAgencia, Cliente cliente, double taxaRendimento, Notificacao notificacao) {
+    public ContaPoupanca(String numConta, String numAgencia, Cliente cliente, double taxaRendimento, NotificacaoSMS notificacao) {
         super(numConta, numAgencia, cliente, notificacao);
     }
+
+    public static double getSaldoPoupanca() {
+        return saldo;
+    }   
 
     @Override
     public boolean depositar(double valor) {
@@ -49,6 +53,16 @@ public class ContaPoupanca extends Conta {
             System.out.println("Saldo insuficiente para realizar a transferência!");
             System.out.println("Não foi possível realizar a transferência!");
             return false;
+        }
+    }
+
+    public void exibirExtrato() {
+        for (Transacao conta : transacao) {
+            System.out.println("- Tipo: " + conta.getDescricao());
+            System.out.println("- Valor: R$" + conta.getValor());
+            System.out.println("- Data: " + conta.getData());
+            System.out.println("================================");
+            System.out.println("Saldo atual: R$" + saldo);
         }
     }
 }
