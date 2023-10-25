@@ -16,8 +16,8 @@ public class App {
         Cliente cliente1 = new Cliente("Gustavo", "04088791304", LocalDate.of(2003, 2, 11), new Endereco("Rua Jasmim", 43, "Bairro Louzinho Monteiro", "64601-615", "Picos", "PI"));
         Cliente cliente2 = new Cliente("Katelyn", "04076256310", LocalDate.of(2005, 11, 13), new Endereco("Rua da Cruz", 220, "Aerolândia", "64600-000", "Picos", "PI"));
 
-        Conta conta1 = new ContaCorrente("001", "0254-2", 1000.0, cliente1, 500.0, new NotificacaoEmail());
-        Conta conta2 = new ContaPoupanca("002", "0254-2", 2000.0, cliente2, 2.0, new NotificacaoSMS());
+        Conta conta1 = new ContaCorrente("001", "0254-2", cliente1, new NotificacaoEmail());
+        Conta conta2 = new ContaPoupanca("002", "0254-2", cliente2, 0.05, new NotificacaoSMS());
 
         boolean sair = false;
 
@@ -35,55 +35,45 @@ public class App {
 
             switch (escolha) {
                 case 1:
-                    realizarSaque(scanner, conta1);
+                    System.out.println("Digite o valor do saque:");
+                    double valorSaque = scanner.nextDouble();
+                    if (conta1.sacar(valorSaque)) {
+                        System.out.println("Saque realizado com sucesso!");
+                    } else {
+                        System.out.println("Não foi possível realizar o saque!");
+                    }
                     break;
                 case 2:
-                    realizarDeposito(scanner, conta1);
+                    System.out.println("Digite o valor do depósito:");
+                    double valorDeposito = scanner.nextDouble();
+                    if (conta1.depositar(valorDeposito)) {
+                        System.out.println("Depósito realizado com sucesso!");
+                    } else {
+                        System.out.println("Não foi possível realizar o depósito!");
+                    }
                     break;
                 case 3:
-                    realizarTransferencia(scanner, conta1, conta2);
+                    System.out.println("Digite o valor da transferência:");
+                    double valorTransferencia = scanner.nextDouble();
+                    if (conta1.transferir(conta2, valorTransferencia)) {
+                        System.out.println("Transferência realizada com sucesso!");
+                    } else {
+                        System.out.println("Não foi possível realizar a transferência!");
+                    }
                     break;
                 case 4:
-                    imprimirExtrato(conta1);
+                    conta1.exibirExtrato();
+                    conta2.exibirExtrato();
                     break;
                 case 5:
                     sair = true;
                     break;
                 default:
-                    System.out.println("Escolha inválida. Tente novamente.");
+                    System.out.println("Opção inválida!");
+                    break;
             }
         }
 
         System.out.println("Programa encerrado.");
-    }
-
-    private static void realizarSaque(Scanner scanner, Conta conta) {
-        System.out.println("Digite o valor do saque: ");
-        double valor = scanner.nextDouble();
-        conta.sacar(valor);
-    }
-
-    private static void realizarDeposito(Scanner scanner, Conta conta) {
-        System.out.println("Digite o valor do depósito: ");
-        double valor = scanner.nextDouble();
-        conta.depositar(valor);
-    }
-
-    private static void realizarTransferencia(Scanner scanner, Conta origem, Conta destino) {
-        System.out.println("Digite o valor da transferência: ");
-        double valor = scanner.nextDouble();
-        origem.transferir(destino, valor);
-    }
-
-    private static void imprimirExtrato(Conta conta) {
-        System.out.println("Extrato da Conta:");
-        System.out.println("=================================================");
-        System.out.println("Nome do Cliente: " + conta.getCliente().getNome());
-        System.out.println("Número da Conta: " + conta.getNumConta());
-        System.out.println("Saldo: " + conta.getSaldo());
-        System.out.println("Transações:");
-        for (Transacao transacao : conta.getTransacao()) {
-            System.out.println(transacao);
-        }
     }
 }
