@@ -1,23 +1,23 @@
 package br.edu.ifpi.poo.entidades;
 public class Endereco {
-    private String logradouro;
+    private String rua;
     private int numero;
     private String bairro;
     private String cep;
     private String cidade;
-    private String uf;
+    private String estado;
 
-    public Endereco(String logradouro, int numero, String bairro, String cep, String cidade, String uf){
-        this.logradouro = logradouro;
+    public Endereco(String rua, int numero, String bairro, String cep, String cidade, String estado){
+        this.rua = rua;
         this.numero = numero;
         this.bairro = bairro;
         this.cep = cep;
         this.cidade = cidade;
-        this.uf = uf;
+        this.estado = estado;
     }
 
-    public String getLogradouro() {
-        return logradouro;
+    public String getRua() {
+        return rua;
     }
 
     public int getNumero(){
@@ -36,12 +36,12 @@ public class Endereco {
         return cidade;
     }
 
-    public String getUf(){
-        return uf;
+    public String getEstado(){
+        return estado;
     }
 
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
+    public void setRua(String rua) {
+        this.rua = rua;
     }
 
     public void setNumero(int numero) {
@@ -60,12 +60,12 @@ public class Endereco {
         this.cidade = cidade;
     }
 
-    public void setUf(String uf) {
-        this.uf = uf;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString(){
-        return "Logradouro: " + logradouro + "\nNúmero: " + numero + "\nBairro: " + bairro + "\nCEP: " + cep + "\nCidade: " + cidade + "\nUF: " + uf;
+        return "rua: " + rua + "\nNúmero: " + numero + "\nBairro: " + bairro + "\nCEP: " + cep + "\nCidade: " + cidade + "\nestado: " + estado;
     }
 }

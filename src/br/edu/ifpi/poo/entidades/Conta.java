@@ -14,7 +14,6 @@ public abstract class Conta {
     public Conta(String numConta, String numAgencia, Cliente cliente, Notificacao notificacao) {
         this.numConta = numConta;
         this.numAgencia = numAgencia;
-        this.saldo = saldo;
         this.cliente = cliente;
         this.transacao = new ArrayList<>();
         this.notificacao = notificacao;
@@ -70,16 +69,28 @@ public abstract class Conta {
 
     public abstract boolean sacar(double valor);
 
-    public abstract boolean transferir(Conta destino, double valor);  
+    public boolean transferir(Conta destino, double valor) {
+        if (valor > 0 && valor <= saldo) {
+            saldo -= valor;
+            destino.saldo += valor;
+            notificacao.enviarNotificacao("Transferencia", valor);
+            transacao.add(new Transacao("Transferencia", valor));
+            destino.getTransacao().add(new Transacao("Recibo transferencia", valor));
+            return true;
+        } else {
+            System.err.println("Valor insuficiente para a transferência!");
+            return false;
+        }
+    }
+    
 
     public void exibirExtrato() {
-        System.out.println("\n***** Extrato de Transacoes da conta " + getNumConta() + " *****");
         for (Transacao conta : transacao) {
-            System.out.println(
-                    "Tipo ->" + conta.getDescricao() +
-                            "\nValor -> R$" + conta.getValor() +
-                            "\nData ->" + conta.getData());
-            System.out.println("\n************");
+            System.out.println("- Tipo: " + conta.getDescricao());
+            System.out.println("- Valor: R$" + conta.getValor());
+            System.out.println("- Data: " + conta.getData());
+            System.out.println("================================");
+            System.out.println("Saldo atual: R$" + saldo);
         }
     }
 }

@@ -5,14 +5,14 @@ public class ContaCorrente extends Conta {
     private double chequeEspecial;
     private int numSaques;
 
-    public ContaCorrente(String numConta, String numAgencia, Cliente cliente, Notificacao notificacao) {
+    public ContaCorrente(String numConta, String numAgencia, Cliente cliente, Notificacao notificacao, double chequeEspecial) {
         super(numConta, numAgencia, cliente, notificacao);
-        this.chequeEspecial = 1000;
-        this.numSaques = 1;
+        this.chequeEspecial = chequeEspecial;
+        this.numSaques = 0;
     }
 
     public double getChequeEspecial() {
-        return super.saldo + this.chequeEspecial;
+        return super.getSaldo() + this.chequeEspecial;
     }
 
     public double getSaldoCorrente() {
