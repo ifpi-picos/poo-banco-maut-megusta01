@@ -1,4 +1,5 @@
 package br.edu.ifpi.poo.entidades;
+
 import java.util.ArrayList;
 import java.util.List;
 import br.edu.ifpi.poo.notificacoes.Notificacao;
@@ -6,9 +7,10 @@ import br.edu.ifpi.poo.notificacoes.Notificacao;
 public abstract class Conta {
     private final String numConta;
     private final String numAgencia;
-    protected static double saldo;
+    protected double saldo; // NÃO pode ser estático
     private Cliente cliente;
-    protected static List<Transacao> transacao;
+    // atributos estáticos são atribudos de classe e não do objeto, NÃO USE!
+    protected static List<Transacao> transacao; // não deveria ser estático
     protected Notificacao notificacao;
 
     public Conta(String numConta, String numAgencia, Cliente cliente, Notificacao notificacao) {
@@ -27,26 +29,26 @@ public abstract class Conta {
         return numConta;
     }
 
-    public static double getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(double saldo){
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
-    
+
     public Cliente getCliente() {
         return cliente;
     }
-    
+
     public List<Transacao> getTransacao() {
         return transacao;
     }
-    
+
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
+
     public Notificacao getNotificacao() {
         return notificacao;
     }
@@ -89,29 +91,29 @@ public abstract class Conta {
             System.out.println("- Valor: R$" + conta.getValor());
             System.out.println("- Data: " + conta.getData());
             System.out.println("================================");
-            System.out.println("Saldo atual: R$" + saldo);
         }
+        System.out.println("Saldo atual: R$" + saldo);
     }
-    
+
 
     // public void exibirExtrato() {
-    //     System.out.println("Extrato da Conta Corrente:");
-    //     for (Transacao conta : ContaCorrente.transacao) {
-    //         System.out.println("- Tipo: " + conta.getDescricao());
-    //         System.out.println("- Valor: R$" + conta.getValor());
-    //         System.out.println("- Data: " + conta.getData());
-    //         System.out.println("================================");
-    //     }
-    
-    //     System.out.println("Extrato da Conta Poupança:");
-    //     for (Transacao conta : ContaPoupanca.transacao) {
-    //         System.out.println("- Tipo: " + conta.getDescricao());
-    //         System.out.println("- Valor: R$" + conta.getValor());
-    //         System.out.println("- Data: " + conta.getData());
-    //         System.out.println("================================");
-    //     }
-    
-    //     System.out.println("Saldo atual da Conta Corrente: R$" + ContaCorrente.getSaldoCorrente());
-    //     System.out.println("Saldo atual da Conta Poupança: R$" + ContaPoupanca.getSaldoPoupanca());
+    // System.out.println("Extrato da Conta Corrente:");
+    // for (Transacao conta : ContaCorrente.transacao) {
+    // System.out.println("- Tipo: " + conta.getDescricao());
+    // System.out.println("- Valor: R$" + conta.getValor());
+    // System.out.println("- Data: " + conta.getData());
+    // System.out.println("================================");
+    // }
+
+    // System.out.println("Extrato da Conta Poupança:");
+    // for (Transacao conta : ContaPoupanca.transacao) {
+    // System.out.println("- Tipo: " + conta.getDescricao());
+    // System.out.println("- Valor: R$" + conta.getValor());
+    // System.out.println("- Data: " + conta.getData());
+    // System.out.println("================================");
+    // }
+
+    // System.out.println("Saldo atual da Conta Corrente: R$" + ContaCorrente.getSaldoCorrente());
+    // System.out.println("Saldo atual da Conta Poupança: R$" + ContaPoupanca.getSaldoPoupanca());
     // }
 }

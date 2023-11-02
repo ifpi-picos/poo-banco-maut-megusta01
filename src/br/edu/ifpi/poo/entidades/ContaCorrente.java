@@ -1,11 +1,13 @@
 package br.edu.ifpi.poo.entidades;
+
 import br.edu.ifpi.poo.notificacoes.NotificacaoEmail;
 
 public class ContaCorrente extends Conta {
     private double chequeEspecial;
     private int numSaques;
 
-    public ContaCorrente(String numConta, String numAgencia, Cliente cliente, NotificacaoEmail notificacao, double chequeEspecial) {
+    public ContaCorrente(String numConta, String numAgencia, Cliente cliente,
+            NotificacaoEmail notificacao, double chequeEspecial) {
         super(numConta, numAgencia, cliente, notificacao);
         this.chequeEspecial = chequeEspecial;
         this.numSaques = 0;
@@ -15,7 +17,7 @@ public class ContaCorrente extends Conta {
         return super.getSaldo() + this.chequeEspecial;
     }
 
-    public static double getSaldoCorrente() {
+    public double getSaldoCorrente() {
         return saldo;
     }
 
@@ -25,6 +27,7 @@ public class ContaCorrente extends Conta {
             if (numSaques > 2) {
                 double taxaTrans = (valor * 0.1);
                 super.saldo -= (valor + taxaTrans);
+
                 destino.saldo += valor;
                 getNotificacao().enviarNotificacao("Transferencia", valor);
                 System.out.println("Transferencia realizada com sucesso !!\n");
@@ -68,13 +71,13 @@ public class ContaCorrente extends Conta {
         }
     }
 
-    //public void exibirExtrato() {
-    //    for (Transacao conta : transacao) {
-    //        System.out.println("- Tipo: " + conta.getDescricao());
-    //        System.out.println("- Valor: R$" + conta.getValor());
-    //        System.out.println("- Data: " + conta.getData());
-    //        System.out.println("================================");
-    //        System.out.println("Saldo atual: R$" + saldo);
-    //    }
-    //}
+    // public void exibirExtrato() {
+    // for (Transacao conta : transacao) {
+    // System.out.println("- Tipo: " + conta.getDescricao());
+    // System.out.println("- Valor: R$" + conta.getValor());
+    // System.out.println("- Data: " + conta.getData());
+    // System.out.println("================================");
+    // System.out.println("Saldo atual: R$" + saldo);
+    // }
+    // }
 }
